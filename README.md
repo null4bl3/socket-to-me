@@ -8,9 +8,13 @@ To avoid installing applications on a client or production device or even loggin
 Please note that this project is intended to run on a LAN network and offers no authentication or even persistence.
 It is however the fastest and easiest way for me to share text and information between two or more machines.
 
-
+Run either as a docker image:
 [Docker image](https://hub.docker.com/r/null4bl3/socket-to-me/)
 
+or clone the repository and:
+```
+npm install & node index.js
+```
 
 1. spin up a docker image that runs this socket.io chat server
 2. access your local machines IP on port 5555.
