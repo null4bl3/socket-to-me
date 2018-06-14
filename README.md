@@ -13,5 +13,4 @@ It is however the fastest and easiest way for me to share text and information b
 3. exchange text data.
 
 
-
 ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Scrot")
