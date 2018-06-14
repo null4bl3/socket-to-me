@@ -8,6 +8,8 @@ To avoid installing applications on a client or production device or even loggin
 Please note that this project is intended to run on a LAN network and offers no authentication or even persistence.
 It is however the fastest and easiest way for me to share text and information between two or more machines.
 
+## INSTALL AND USAGE
+
 Run either as a docker image:
 [Docker image](https://hub.docker.com/r/null4bl3/socket-to-me/)
 
