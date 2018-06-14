@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font: 13px Helvetica, Arial;
+}
+
+#messages {
+  padding-top: 50px;
+  min-height: 60vh;
+  max-height: 60vh;
+  overflow: auto;
+}
+#messages {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#messages li {
+  padding: 15px 10px;
+  border-radius: 2px;
+}
+#messages li:nth-child(odd) {
+  background: #eee;
+}
+#messages {
+  margin-bottom: 40px
+}

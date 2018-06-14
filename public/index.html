@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>SOCKET TO ME</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/app.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="./js/app.js" charset="utf-8"></script>
+  </head>
+  <body style="height: 100%; font-family: 'Montserrat', sans-serif;">
+    <div class="jumbotron ui raised card">
+      <h1 class="display-5 text-center">SOCKET TO ME!</h1>
+    </div>
+    <div class="container" style="padding-top: 50px">
+      <ul id="messages"></ul>
+      <form action="">
+        <div class="input-group mb-3">
+          <input type="text" id="m" class="form-control" autocomplete="off" placeholder="..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" style="width: 150px">SEND</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
