@@ -14,4 +14,4 @@ It is however the fastest and easiest way for me to share text and information b
 
 
 
-[alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Scrot")
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Scrot")
