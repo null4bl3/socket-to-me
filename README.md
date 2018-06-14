@@ -16,7 +16,7 @@ or clone the repository and:
 npm install & node index.js
 ```
 
-1. spin up a docker image that runs this socket.io chat server
+1. spin up a docker image that runs this socket.io chat server or clone and run the project locally with nodejs.
 2. access your local machines IP on port 5555.
 3. exchange text data.
 
