@@ -18,4 +18,4 @@ test:run:
   stage: test
   script:
    - npm install
-   - NODE_ENV=test node app.js
+   - NODE_ENV=test node index.js
