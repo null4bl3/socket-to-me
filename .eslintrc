@@ -1,0 +1,34 @@
+{
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "semi": 2,
+    "indent": ["error", 2],
+    "arrow-body-style": ["error", "always"],
+    "arrow-parens": ["error", "always"],
+    "arrow-spacing": ["error", {
+      "before": true,
+      "after": true
+    }],
+    "constructor-super": "error",
+    "no-arrow-condition": "warn",
+    "no-class-assign": "error",
+    "no-const-assign": "error",
+    "no-dupe-class-members": "error",
+    "no-this-before-super": "error",
+    "no-var": "warn",
+    "no-unused-vars": ["error", {
+      "vars": "local",
+      "args": "after-used"
+    }],
+    "object-shorthand": ["warn", "never"],
+    "prefer-arrow-callback": "warn",
+    "prefer-spread": "warn",
+    "require-yield": "error"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2017
+  }
+}

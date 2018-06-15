@@ -6,16 +6,15 @@ let port = process.env.PORT || 5555;
 
 app.use(express.static("public"));
 
-// app.get('/', (req, res) => {
-//   res.sendFile(__dirname + '/index.html');
-// });
-
-io.on("connection", socket => {
-        socket.on("chat message", msg => {
-                io.emit("chat message", msg);
-        });
+io.on("connection", (socket) => {
+  socket.on("chat message", (msg) => {
+    io.emit("chat message", msg);
+  });
 });
 
 http.listen(port, () => {
-        console.log("listening on *:" + port);
+  console.log("listening on *:" + port);
+  if (process.env.NODE_ENV === "test") {
+    process.exit(0);
+  }
 });
