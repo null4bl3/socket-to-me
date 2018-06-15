@@ -1,3 +1,6 @@
+#PROJECT MOVED TO GITLAB
+https://gitlab.com/null4bl3/socket-to-me
+
 # SOCKET TO ME
 
 As i find myself working on several machines where i can't install any communication software or log into services due to the machines is to be shipped to production without containing my credentials or applications.
