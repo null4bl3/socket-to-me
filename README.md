@@ -1,4 +1,4 @@
-# PROJECT MOVED TO GITLAB
+## Future updates can be found on the gitlab repository
 https://gitlab.com/null4bl3/socket-to-me
 
 # SOCKET TO ME
