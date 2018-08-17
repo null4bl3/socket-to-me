@@ -4,6 +4,7 @@ let http = require("http").Server(app);
 let io = require("socket.io")(http);
 let port = process.env.PORT || 5555;
 let moment = require("moment");
+let cron = require("node-cron");
 let timer = require("./timestamp");
 let message_list = [
   {
@@ -29,7 +30,14 @@ io.on("connection", (socket) => {
 http.listen(port, () => {
   console.log("\nSERVER UP - ", timer());
   console.log("listening on *:" + port + "\n");
-  if (process.env.NODE_ENV === "test") {
-    process.exit(0);
+  if (process.env.NODE_ENV === "PRODUCTION") {
+    cron.schedule("0 0 0 * * *", () => {
+      message_list = [
+        {
+          message: "connected ..",
+          timestamp: moment().format("YYYY/MM/DD - HH:mm:ss")
+        }
+      ];
+    });
   }
 });
