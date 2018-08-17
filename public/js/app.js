@@ -9,40 +9,33 @@ $(() => {
     return false;
   });
 
-  socket.on("chat message", (msg) => {
-    let t = timer();
-    $("#messages").append(
-      $("<li class='card'>")
-        .append($("<b>").text(t))
-        .append($("<p>").text(msg))
-    );
+  socket.on("chat message", (tmp) => {
+    prune(tmp);
+    // $("#messages").append(
+    //   $("<li class='card'>")
+    //     .append($("<b style='font-size: 10px; color: #5858558'>").text(tmp.timestamp))
+    //     .append($("<p>").text(tmp.message))
+    // );
     window.scrollTo(0, document.body.scrollHeight);
   });
 
   socket.on("list", (list) => {
     list.forEach((item) => {
-      $("#messages").append(
-        $("<li class='card'>")
-          .append($("<b>").text(item["timestamp"]))
-          .append($("<p>").text(item["message"]))
-      );
+      prune(item);
+      // $("#messages").append(
+      //   $("<li class='card'>")
+      //     .append($("<b style='font-size: 10px; color: #5858558'>").text(item["timestamp"]))
+      //     .append($("<p style='font-size: 16px'>").text(item["message"]))
+      // );
     });
   });
-});
 
-let timer = function() {
-  let d = new Date();
-  let curr_hour = d.getHours();
-  let curr_min = d.getMinutes();
-  let curr_sec = d.getSeconds();
-  if (curr_sec < 10) {
-    curr_sec = "0" + curr_sec;
-  }
-  if (curr_min < 10) {
-    curr_min = "0" + curr_min;
-  }
-  if (curr_hour < 10) {
-    curr_hour = "0" + curr_hour;
-  }
-  return curr_hour + ":" + curr_min;
-};
+  let prune = (item) => {
+    $("#messages").append(
+      $("<li class='card'>")
+        .append($("<b style='font-size: 10px; color: #5858558'>").text(item["timestamp"]))
+        .append($("<hr style='margin-top: -1px; margin-bottom: 1px'>"))
+        .append($("<p style='font-size: 16px'>").text(item["message"]))
+    );
+  };
+});
