@@ -11,22 +11,12 @@ $(() => {
 
   socket.on("chat message", (tmp) => {
     prune(tmp);
-    // $("#messages").append(
-    //   $("<li class='card'>")
-    //     .append($("<b style='font-size: 10px; color: #5858558'>").text(tmp.timestamp))
-    //     .append($("<p>").text(tmp.message))
-    // );
     window.scrollTo(0, document.body.scrollHeight);
   });
 
   socket.on("list", (list) => {
     list.forEach((item) => {
       prune(item);
-      // $("#messages").append(
-      //   $("<li class='card'>")
-      //     .append($("<b style='font-size: 10px; color: #5858558'>").text(item["timestamp"]))
-      //     .append($("<p style='font-size: 16px'>").text(item["message"]))
-      // );
     });
   });
 
