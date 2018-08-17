@@ -1,10 +1,14 @@
+let message_list = [];
+
 $(() => {
   let socket = io();
+
   $("form").submit(() => {
     socket.emit("chat message", $("#m").val());
     $("#m").val("");
     return false;
   });
+
   socket.on("chat message", (msg) => {
     let t = timer();
     $("#messages").append(
@@ -13,6 +17,16 @@ $(() => {
         .append($("<p>").text(msg))
     );
     window.scrollTo(0, document.body.scrollHeight);
+  });
+
+  socket.on("list", (list) => {
+    list.forEach((item) => {
+      $("#messages").append(
+        $("<li class='card'>")
+          .append($("<b>").text(item["timestamp"]))
+          .append($("<p>").text(item["message"]))
+      );
+    });
   });
 });
 
