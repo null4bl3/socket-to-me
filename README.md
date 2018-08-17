@@ -22,5 +22,6 @@ npm install & node index.js
 2. access your local machines IP on port 5555.
 3. exchange text data.
 
+Do **NOT** leave this project running unattended as it offers no authentication at all. To reset persisted data every day at midnight, set the 'NODE_ENV' to 'PRODOCUTION'.
 
 ![alt text](https://raw.githubusercontent.com/null4bl3/socket-to-me/master/scrot.png "Scrot")
