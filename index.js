@@ -30,7 +30,10 @@ io.on("connection", (socket) => {
 http.listen(port, () => {
   console.log("\nSERVER UP - ", timer());
   console.log("listening on *:" + port + "\n");
-  if (process.env.NODE_ENV === "PRODUCTION") {
+  if (process.env.NODE_ENV === "test") {
+    process.exit(0);
+  }
+  if (process.env.NODE_ENV === "production") {
     cron.schedule("0 0 0 * * *", () => {
       message_list = [
         {
