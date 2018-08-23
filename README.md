@@ -26,4 +26,4 @@ npm install & node index.js
 Do **NOT** leave this project running unattended and publicly available as it offers no authentication at all. 
 To reset persisted data every day at midnight, set the 'NODE_ENV' to 'PRODOCUTION'.
 
-![alt text](https://raw.githubusercontent.com/null4bl3/socket-to-me/master/scrot.png "Scrot")
+![alt text](https://raw.githubusercontent.com/null4bl3/socket-to-me/master/scrotting.png "Scrot")
