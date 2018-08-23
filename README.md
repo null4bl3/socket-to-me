@@ -17,9 +17,11 @@ docker pull null4bl3/socket-to-me
 
 docker run -p 5555:5555 null4bl3/socket-to-me
 ```
-or clone the repository and:
+or clone the repository and run:
 ```
-npm install & node index.js
+npm install
+
+node index.js
 ```
 
 
