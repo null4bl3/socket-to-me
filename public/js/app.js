@@ -20,12 +20,34 @@ $(() => {
     });
   });
 
+  let app = new Vue({
+    el: "#app",
+    data: {
+      msgs: []
+    },
+    methods: {
+      onCopy: function(e) {
+        let toast = this.$toasted.show("COPIED!", {
+          theme: "primary",
+          position: "top-right",
+          duration: 5000
+        });
+      },
+      onError: function(e) {
+        let toast = this.$toasted.show("Error Copying Item!", {
+          theme: "primary",
+          type: "error",
+          position: "top-right",
+          duration: 5000
+        });
+      }
+    }
+  });
+
   let prune = (item) => {
-    $("#messages").append(
-      $("<li class='card'>")
-        .append($("<b style='font-size: 10px; color: #5858558'>").text(item["timestamp"]))
-        .append($("<hr style='margin-top: 5px; margin-bottom: 3px'>"))
-        .append($("<p style='font-size: 16px'>").text(item["message"]))
-    );
+    app.msgs.push({
+      msg: item.message,
+      time: item.timestamp
+    });
   };
 });

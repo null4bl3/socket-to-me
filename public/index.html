@@ -4,24 +4,50 @@
     <title>SOCKET TO ME</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/vue-toasted.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+    <script src="./js/vue.min.js" charset="utf-8"></script>
+    <script src="./js/vue-clipboard.min.js" charset="utf-8"></script>
+    <script src="./js/vue-toasted.min.js" charset="utf-8"></script>
     <script src="./js/app.js" charset="utf-8"></script>
+    <script>
+      Vue.use(Toasted)
+    </script>
   </head>
   <body style="height: 100%; font-family: 'Montserrat', sans-serif;">
     <div class="jumbotron ui raised card">
-      <h1 class="display-5 text-center">SOCKET TO ME!</h1>
+      <h1 class="display-5 text-center" id="banner_like">SOCKET TO ME!</h1>
     </div>
     <div class="container col-sm-12 col-lg-6" style="padding-top: 20px">
-      <ul id="messages"></ul>
+      <div id="app">
+        <ul id="msg_list">
+          <li v-for="msg in msgs" class="card">
+            <b style='font-size: 10px; color: #5858558'>
+              {{ msg.time }}
+              <a class="float-right badge badge-light" style="cursor: pointer; font-size: 10px"
+                v-clipboard:copy="msg.msg"
+                v-clipboard:success="onCopy"
+                v-clipboard:error="onError">
+                COPY
+              </a>
+            </b>
+            <hr style='margin-top: 5px; margin-bottom: 3px'>
+            <br>
+            <p style='font-size: 14px'>
+              {{ msg.msg }}
+            </p>
+          </li>
+        </ul>
+      </div>
       <form action="" class="footlike col-sm-12 col-lg-6" style="padding-right: 35px">
         <div class="input-group " >
           <input type="text" id="m" class="form-control" autocomplete="off" placeholder="..." >
           <div class="input-group-append">
-            <button class="btn btn-outline-secondary" style="width: 150px">
-          	   <b style="color: black">
-          	      S E N D
+            <button class="btn btn-secondary" style="width: 150px">
+          	   <b>
+          	      P O S T
           	   </b>
           	</button>
           </div>

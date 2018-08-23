@@ -7,6 +7,12 @@ body {
   font: 13px Helvetica, Arial;
 }
 
+#banner_like {
+  height: 2vh;
+  margin-top: -25px;
+}
+
+
 #messages {
   padding-top: 20px;
   min-height: 60vh;
@@ -26,6 +32,28 @@ body {
   background: #eee;
 }
 #messages {
+  margin-bottom: 40px;
+}
+
+#msg_list {
+  padding-top: 20px;
+  min-height: 60vh;
+  max-height: 60vh;
+  overflow: auto;
+}
+#msg_list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+#msg_list li {
+  padding: 15px 10px;
+  border-radius: 2px;
+}
+#msg_list li:nth-child(odd) {
+  background: #eee;
+}
+#msg_list {
   margin-bottom: 40px;
 }
 
