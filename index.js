@@ -37,7 +37,7 @@ http.listen(port, () => {
     cron.schedule("0 0 0 * * *", () => {
       message_list = [
         {
-          message: "connected ..",
+          message: "data reset ..",
           timestamp: moment().format("YYYY/MM/DD - HH:mm:ss")
         }
       ];
