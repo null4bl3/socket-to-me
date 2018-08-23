@@ -5,7 +5,6 @@ let io = require("socket.io")(http);
 let port = process.env.PORT || 5555;
 let moment = require("moment");
 let cron = require("node-cron");
-let timer = require("./timestamp");
 let message_list = [
   {
     message: "connected ..",
@@ -28,8 +27,8 @@ io.on("connection", (socket) => {
 });
 
 http.listen(port, () => {
-  console.log("\nSERVER UP - ", timer());
-  console.log("listening on *:" + port + "\n");
+  console.log("\nSERVER UP: ", moment().format("YYYY/MM/DD - HH:mm:ss"));
+  console.log("ON PORT: *:" + port + "\n");
   if (process.env.NODE_ENV === "test") {
     process.exit(0);
   }
