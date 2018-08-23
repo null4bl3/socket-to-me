@@ -1,6 +1,3 @@
-## Future updates can be found on the gitlab repository
-https://gitlab.com/null4bl3/socket-to-me
-
 # SOCKET TO ME
 
 As i find myself working on several machines where i can't install any communication software or log into services due to the machines is to be shipped to production without containing my credentials or applications.
@@ -11,20 +8,22 @@ To avoid installing applications on a client or production device or even loggin
 Please note that this project is intended to run on a LAN network and offers no authentication or even persistence.
 It is however the fastest and easiest way for me to share text and information between two or more machines.
 
-## INSTALL AND USAGE
+## INSTALLATION AND USAGE
 
 Run either as a docker image:
 [Docker image](https://hub.docker.com/r/null4bl3/socket-to-me/)
+```
+docker pull null4bl3/socket-to-me
 
+docker run -p 5555:5555 null4bl3/socket-to-me
+```
 or clone the repository and:
 ```
 npm install & node index.js
 ```
 
-1. spin up a docker image that runs this socket.io chat server or clone and run the project locally with nodejs.
-2. access your local machines IP on port 5555.
-3. exchange text data.
 
-Do **NOT** leave this project running unattended as it offers no authentication at all. To reset persisted data every day at midnight, set the 'NODE_ENV' to 'PRODOCUTION'.
+Do **NOT** leave this project running unattended and publicly available as it offers no authentication at all. 
+To reset persisted data every day at midnight, set the 'NODE_ENV' to 'PRODOCUTION'.
 
 ![alt text](https://raw.githubusercontent.com/null4bl3/socket-to-me/master/scrot.png "Scrot")
