@@ -32,7 +32,7 @@ http.listen(port, () => {
   if (process.env.NODE_ENV === "test") {
     process.exit(0);
   }
-  if (process.env.NODE_ENV === "production") {
+  if (process.env.NODE_ENV === "PRODUCTION" || process.env.NODE_ENV === "production") {
     cron.schedule("0 0 0 * * *", () => {
       message_list = [
         {
