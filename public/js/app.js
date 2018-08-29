@@ -1,9 +1,14 @@
-const BASE_URL = "http://localhost:5555";
-const url = `${BASE_URL}/upload_file`;
+const url = "http://127.0.0.1:5555/upload_file";
 let message_list = [];
 
 $(() => {
   let socket = io();
+  axios
+    .get("/init")
+    .then((url) => {
+      console.log("BASE_URL: ", url.data);
+    })
+    .catch(console.log);
 
   $("form").submit(() => {
     socket.emit("chat message", $("#m").val());
@@ -29,14 +34,14 @@ $(() => {
     },
     methods: {
       onCopy: (e) => {
-        let toast = this.$toasted.show("COPIED!", {
+        Vue.toasted.success("COPIED!", {
           theme: "primary",
           position: "top-right",
           duration: 5000
         });
       },
       onError: (e) => {
-        let toast = this.$toasted.show("Error Copying Item!", {
+        Vue.toasted.error("Error Copying Item!", {
           theme: "primary",
           type: "error",
           position: "top-right",
@@ -44,6 +49,7 @@ $(() => {
         });
       },
       upload: (formData) => {
+        console.log("url ", url);
         let form_data = new FormData();
         form_data.append("file", formData.srcElement.files[0], formData.srcElement.files[0].name);
         axios
@@ -51,8 +57,18 @@ $(() => {
           .then((data) => {
             form_data = new FormData();
             document.getElementById("file-input").value = "";
+            Vue.toasted.success("FILE UPLOADED!", {
+              theme: "primary",
+              position: "top-right",
+              duration: 5000
+            });
           })
           .catch((e) => {
+            Vue.toasted.error("Upload Failed!", {
+              theme: "primary",
+              position: "top-right",
+              duration: 5000
+            });
             console.log(e);
           });
       }

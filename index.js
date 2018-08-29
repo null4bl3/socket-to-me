@@ -1,5 +1,6 @@
 const express = require("express");
-const BASE_URL = "http://localhost:5555";
+let BASE_URL = "http://127.0.0.1:5555";
+let LAN_IP = "";
 let app = require("express")();
 let http = require("http").Server(app);
 let io = require("socket.io")(http);
@@ -8,6 +9,7 @@ let port = process.env.PORT || 5555;
 let moment = require("moment");
 let cron = require("node-cron");
 let multer = require("multer");
+let cors = require("cors");
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "./files");
@@ -25,7 +27,10 @@ let message_list = [
     timestamp: moment().format("YYYY/MM/DD - HH:mm:ss")
   }
 ];
-
+require("dns").lookup(require("os").hostname(), (err, add, fam) => {
+  BASE_URL = "http://" + add + ":" + port;
+});
+app.use(cors());
 app.use(express.static("public"));
 app.use("/files", express.static(path.join(__dirname, "files")));
 
@@ -37,6 +42,10 @@ app.post("/upload_file", upload.single("file"), (req, res, next) => {
   message_list.push(tmp);
   io.emit("chat message", tmp);
   res.send("OK");
+});
+
+app.get("/init", (req, res) => {
+  res.send(BASE_URL);
 });
 
 io.on("connection", (socket) => {

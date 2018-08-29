@@ -11,11 +11,11 @@
     <script src="./js/vue.min.js" charset="utf-8"></script>
     <script src="./js/vue-clipboard.min.js" charset="utf-8"></script>
     <script src="./js/vue-toasted.min.js" charset="utf-8"></script>
-    <script src="./js/axios.min.js" charset="utf-8"></script>
-    <script src="./js/app.js" charset="utf-8"></script>
     <script>
       Vue.use(Toasted)
     </script>
+    <script src="./js/app.js" charset="utf-8"></script>
+    <script src="./js/axios.min.js" charset="utf-8"></script>
   </head>
   <body style="height: 100%; font-family: 'Montserrat', sans-serif;">
     <div class="jumbotron ui raised card">
@@ -48,7 +48,6 @@
             <a v-if="msg.msg.includes('http')" target="_blank" v-bind:href="msg.msg">{{msg.msg}}</a>
           </li>
         </ul>
-        <!-- <input class="form-control input-file" type="file"  @change="upload($event)" id="file-input"> -->
       </div>
       <form action="" class="footlike col-sm-12 col-lg-6" style="padding-right: 35px">
         <br>
