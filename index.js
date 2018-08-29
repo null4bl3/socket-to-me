@@ -1,10 +1,24 @@
 const express = require("express");
+const BASE_URL = "http://localhost:5555";
 let app = require("express")();
 let http = require("http").Server(app);
 let io = require("socket.io")(http);
+let path = require("path");
 let port = process.env.PORT || 5555;
 let moment = require("moment");
 let cron = require("node-cron");
+let multer = require("multer");
+let storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "./files");
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+});
+let upload = multer({
+  storage: storage
+});
 let message_list = [
   {
     message: "connected ..",
@@ -13,6 +27,17 @@ let message_list = [
 ];
 
 app.use(express.static("public"));
+app.use("/files", express.static(path.join(__dirname, "files")));
+
+app.post("/upload_file", upload.single("file"), (req, res, next) => {
+  let tmp = {
+    message: BASE_URL + "/files/" + req.file.originalname,
+    timestamp: moment().format("YYYY/MM/DD - HH:mm:ss")
+  };
+  message_list.push(tmp);
+  io.emit("chat message", tmp);
+  res.send("OK");
+});
 
 io.on("connection", (socket) => {
   socket.on("chat message", (msg) => {
@@ -27,8 +52,10 @@ io.on("connection", (socket) => {
 });
 
 http.listen(port, () => {
-  console.log("\nSERVER UP: ", moment().format("YYYY/MM/DD - HH:mm:ss"));
-  console.log("ON PORT: *:" + port + "\n");
+  console.log("\n----------------------------------------");
+  console.log("\n => SERVER UP: \t", moment().format("YYYY/MM/DD - HH:mm:ss"));
+  console.log(" => ON PORT: *\t:" + port + "\n");
+  console.log("----------------------------------------\n");
   if (process.env.NODE_ENV === "test") {
     process.exit(0);
   }

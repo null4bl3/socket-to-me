@@ -1,3 +1,5 @@
+const BASE_URL = "http://localhost:5555";
+const url = `${BASE_URL}/upload_file`;
 let message_list = [];
 
 $(() => {
@@ -26,20 +28,33 @@ $(() => {
       msgs: []
     },
     methods: {
-      onCopy: function(e) {
+      onCopy: (e) => {
         let toast = this.$toasted.show("COPIED!", {
           theme: "primary",
           position: "top-right",
           duration: 5000
         });
       },
-      onError: function(e) {
+      onError: (e) => {
         let toast = this.$toasted.show("Error Copying Item!", {
           theme: "primary",
           type: "error",
           position: "top-right",
           duration: 5000
         });
+      },
+      upload: (formData) => {
+        let form_data = new FormData();
+        form_data.append("file", formData.srcElement.files[0], formData.srcElement.files[0].name);
+        axios
+          .post(url, form_data)
+          .then((data) => {
+            form_data = new FormData();
+            document.getElementById("file-input").value = "";
+          })
+          .catch((e) => {
+            console.log(e);
+          });
       }
     }
   });

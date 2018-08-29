@@ -11,6 +11,7 @@
     <script src="./js/vue.min.js" charset="utf-8"></script>
     <script src="./js/vue-clipboard.min.js" charset="utf-8"></script>
     <script src="./js/vue-toasted.min.js" charset="utf-8"></script>
+    <script src="./js/axios.min.js" charset="utf-8"></script>
     <script src="./js/app.js" charset="utf-8"></script>
     <script>
       Vue.use(Toasted)
@@ -22,6 +23,12 @@
     </div>
     <div class="container col-sm-12 col-lg-6" style="padding-top: 20px">
       <div id="app">
+        <div class="upload-btn-wrapper">
+          <button class="btn">ADD FILE</button>
+          <input class="input-file" type="file"  @change="upload($event)" id="file-input">
+        </div>
+        <br>
+        <br>
         <ul id="msg_list">
           <li v-for="msg in msgs" class="card">
             <b style='font-size: 10px; color: #5858558'>
@@ -35,14 +42,17 @@
             </b>
             <hr style='margin-top: 5px; margin-bottom: 3px'>
             <br>
-            <p style='font-size: 14px'>
+            <p v-if="!msg.msg.includes('http')" style='font-size: 14px'>
               {{ msg.msg }}
             </p>
+            <a v-if="msg.msg.includes('http')" target="_blank" v-bind:href="msg.msg">{{msg.msg}}</a>
           </li>
         </ul>
+        <!-- <input class="form-control input-file" type="file"  @change="upload($event)" id="file-input"> -->
       </div>
       <form action="" class="footlike col-sm-12 col-lg-6" style="padding-right: 35px">
-        <div class="input-group " >
+        <br>
+        <div class="input-group">
           <input type="text" id="m" class="form-control" autocomplete="off" placeholder="..." >
           <div class="input-group-append">
             <button class="btn btn-secondary" style="width: 150px">
