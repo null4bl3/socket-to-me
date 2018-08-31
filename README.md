@@ -8,7 +8,7 @@ Please note that this project is intended to run on a LAN network and offers no 
 It is however the fastest and easiest way for me to share text and information between two or more machines without intalling any applications or signing in to any services.
 
 # NOTE:
-This project discriminates against LAN networks not using the "192.168.1.\*" standard.
+This project discriminates against LAN networks not using the "192.168.1.\*" standard. This should only affect file upload, and not general sharing of data.
 
 ## INSTALLATION AND USAGE
 
