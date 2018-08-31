@@ -1,4 +1,4 @@
-const url = "http://192.168.1.11:5555/upload_file";
+let BASE_URL = "";
 let message_list = [];
 
 $(() => {
@@ -6,7 +6,8 @@ $(() => {
   axios
     .get("/init")
     .then((url) => {
-      console.log("BASE_URL: ", url.data);
+      BASE_URL = url.data + "/upload_file";
+      console.log("BASE_URL: ", BASE_URL);
     })
     .catch(console.log);
 
@@ -49,11 +50,10 @@ $(() => {
         });
       },
       upload: (formData) => {
-        console.log("url ", url);
         let form_data = new FormData();
         form_data.append("file", formData.srcElement.files[0], formData.srcElement.files[0].name);
         axios
-          .post(url, form_data)
+          .post(BASE_URL, form_data)
           .then((data) => {
             form_data = new FormData();
             document.getElementById("file-input").value = "";
