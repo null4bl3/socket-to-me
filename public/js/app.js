@@ -1,4 +1,4 @@
-const url = "http://127.0.0.1:5555/upload_file";
+const url = "http://192.168.1.11:5555/upload_file";
 let message_list = [];
 
 $(() => {

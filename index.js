@@ -1,7 +1,9 @@
 const express = require("express");
-let BASE_URL = "http://127.0.0.1:5555";
+let BASE_URL = "";
 let LAN_IP = "";
 let app = require("express")();
+let os = require("os");
+let interfaces = os.networkInterfaces();
 let http = require("http").Server(app);
 let io = require("socket.io")(http);
 let path = require("path");
@@ -27,9 +29,24 @@ let message_list = [
     timestamp: moment().format("YYYY/MM/DD - HH:mm:ss")
   }
 ];
-require("dns").lookup(require("os").hostname(), (err, add, fam) => {
-  BASE_URL = "http://" + add + ":" + port;
-});
+let addresses = [];
+
+for (let k in interfaces) {
+  for (let k2 in interfaces[k]) {
+    let address = interfaces[k][k2];
+    if (address.family === "IPv4" && !address.internal) {
+      if (address.address.includes("192.168")) {
+        addresses.push(address.address);
+      }
+    }
+  }
+}
+if (addresses.length > 0) {
+  BASE_URL = "http://" + addresses[0] + ":" + port;
+} else {
+  BASE_URL = "http://192.168.1.11:5555";
+}
+
 app.use(cors());
 app.use(express.static("public"));
 app.use("/files", express.static(path.join(__dirname, "files")));
@@ -61,10 +78,10 @@ io.on("connection", (socket) => {
 });
 
 http.listen(port, () => {
-  console.log("\n----------------------------------------");
+  console.log("\n------------------------------------------");
   console.log("\n => SERVER UP: \t", moment().format("YYYY/MM/DD - HH:mm:ss"));
-  console.log(" => ON PORT: *\t:" + port + "\n");
-  console.log("----------------------------------------\n");
+  console.log(" => BASE_URL: \t " + BASE_URL + "\n");
+  console.log("------------------------------------------\n");
   if (process.env.NODE_ENV === "test") {
     process.exit(0);
   }

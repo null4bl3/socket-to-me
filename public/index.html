@@ -24,8 +24,8 @@
     <div class="container col-sm-12 col-lg-6" style="padding-top: 20px">
       <div id="app">
         <div class="upload-btn-wrapper">
-          <button class="btn">ADD FILE</button>
-          <input class="input-file" type="file"  @change="upload($event)" id="file-input">
+          <!-- <button class="btn">ADD FILE</button> -->
+          <input class="input-file" type="file" v-on:change="upload($event)" id="file-input">
         </div>
         <br>
         <br>
