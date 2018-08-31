@@ -7,6 +7,9 @@ Often i found myself needing to share system logs or other investigative informa
 Please note that this project is intended to run on a LAN network and offers no authentication or even persistence between server restarts.
 It is however the fastest and easiest way for me to share text and information between two or more machines without intalling any applications or signing in to any services.
 
+# NOTE:
+This project discriminates against LAN networks not using the "192.168.1.\*" standard.
+
 ## INSTALLATION AND USAGE
 
 Run either as a docker image:
@@ -24,7 +27,7 @@ node index.js
 ```
 
 
-Do **NOT** leave this project running unattended and publicly available as it offers no authentication at all. 
-To reset persisted data every day at midnight, set the **'NODE_ENV'** to **'PRODUCTION'**. 
+Do **NOT** leave this project running unattended and publicly available as it offers no authentication at all.
+To reset persisted data every day at midnight, set the **'NODE_ENV'** to **'PRODUCTION'**.
 
 ![alt text](https://raw.githubusercontent.com/null4bl3/socket-to-me/master/scrotting.png "Scrot")
