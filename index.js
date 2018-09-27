@@ -44,7 +44,7 @@ for (let k in interfaces) {
 if (addresses.length > 0) {
   BASE_URL = "http://" + addresses[0] + ":" + port;
 } else {
-  BASE_URL = "http://192.168.1.11:5555";
+  BASE_URL = "http://192.168.1.111:5555";
 }
 
 app.use(cors());
